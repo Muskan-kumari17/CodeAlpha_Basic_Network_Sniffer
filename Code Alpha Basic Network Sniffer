@@ -1,0 +1,536 @@
+# CodeAlpha Basic Network Sniffer
+
+## 📌 Project Title
+
+**Basic Network Sniffer using Python and Scapy**
+
+This project was developed as part of the **CodeAlpha Cyber Security Internship – Task 1**.
+
+---
+
+## 📖 Project Overview
+
+A network sniffer is a security and networking tool used to capture and analyze network packets travelling through a network interface.
+
+The purpose of this project is to understand how network communication takes place and how different protocols transfer data across a network.
+
+This project uses **Python** and the **Scapy** library to capture network packets and display useful information such as:
+
+- Packet number
+- Source IP address
+- Destination IP address
+- Network protocol
+- Source port
+- Destination port
+- Available packet payload
+
+The project provides practical experience with packet capture, IP addressing, transport-layer protocols, ports, and basic network traffic analysis.
+
+---
+
+## 🎯 Objectives
+
+The main objectives of this project are:
+
+1. To understand the basic concept of network packet capture.
+2. To capture network traffic using Python.
+3. To identify source and destination IP addresses.
+4. To identify commonly used network protocols.
+5. To identify TCP and UDP source and destination ports.
+6. To inspect available packet payload information.
+7. To understand the structure of network packets.
+8. To gain practical knowledge of network traffic analysis.
+9. To understand how packet information can be useful in cybersecurity.
+10. To develop a beginner-friendly network monitoring tool.
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|------------|---------|
+| Python | Programming language |
+| Scapy | Packet capturing and analysis |
+| Visual Studio Code | Development environment |
+| Git | Version control |
+| GitHub | Source code hosting |
+
+---
+
+## 📂 Project Structure
+
+```text
+CodeAlpha_Basic_Network_Sniffer/
+│
+├── sniffer.py
+├── requirements.txt
+├── README.md
+│
+└── screenshots/
+    └── task1-output.png
+````
+
+### File Description
+
+### `sniffer.py`
+
+Contains the main Python program responsible for capturing and analyzing network packets.
+
+### `requirements.txt`
+
+Contains the Python dependency required by the project.
+
+```text
+scapy==2.7.0
+```
+
+### `README.md`
+
+Contains project documentation, installation instructions, usage instructions, testing information, and project details.
+
+### `screenshots/task1-output.png`
+
+Contains a screenshot of the network sniffer successfully capturing packets.
+
+---
+
+# 🔍 How the Network Sniffer Works
+
+The program uses Scapy to listen for network packets.
+
+When a packet is captured, the program checks whether it contains an IP layer.
+
+If an IP packet is detected, the program extracts:
+
+```text
+Source IP
+Destination IP
+Protocol
+Source Port
+Destination Port
+Payload
+```
+
+The program then displays this information in the terminal.
+
+---
+
+# ⚙️ Installation
+
+## Step 1: Install Python
+
+Make sure Python is installed on the system.
+
+Check the Python version:
+
+```bash
+python --version
+```
+
+---
+
+## Step 2: Install Scapy
+
+Install the required Scapy package:
+
+```bash
+pip install scapy
+```
+
+Alternatively, install all project dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# ▶️ Running the Project
+
+Run the program using:
+
+```bash
+python sniffer.py
+```
+
+If the system has multiple Python installations, the appropriate Python executable can be used to run the program.
+
+After starting, the program displays:
+
+```text
+===================================
+     CODEALPHA NETWORK SNIFFER
+===================================
+Starting packet capture...
+Press Ctrl+C to stop.
+```
+
+The program then starts monitoring network packets.
+
+---
+
+# 📊 Packet Information Displayed
+
+For every detected IP packet, the program displays information such as:
+
+```text
+===================================
+Packet Number   : 26665
+Source IP       : 10.0.13.157
+Destination IP  : 10.0.7.59
+Protocol        : TCP
+Source Port     : 52850
+Destination Port: 8009
+Payload         : No Raw Payload
+```
+
+---
+
+## 1. Packet Number
+
+The packet number represents the order in which the program captured the packet.
+
+For example:
+
+```text
+Packet Number : 26665
+```
+
+This helps identify individual packets during analysis.
+
+---
+
+## 2. Source IP
+
+The source IP represents the IP address from which the packet originated.
+
+Example:
+
+```text
+Source IP : 10.0.13.157
+```
+
+---
+
+## 3. Destination IP
+
+The destination IP represents the address to which the packet is being sent.
+
+Example:
+
+```text
+Destination IP : 10.0.7.59
+```
+
+---
+
+## 4. Protocol
+
+The program identifies the network protocol used by the packet.
+
+The program can identify:
+
+* TCP
+* UDP
+* ICMP
+* Other IP protocols
+
+Example:
+
+```text
+Protocol : TCP
+```
+
+---
+
+## 5. Source Port
+
+For TCP and UDP packets, the source port identifies the sending application or service endpoint.
+
+Example:
+
+```text
+Source Port : 52850
+```
+
+---
+
+## 6. Destination Port
+
+The destination port identifies the receiving service or application endpoint.
+
+Example:
+
+```text
+Destination Port : 8009
+```
+
+---
+
+## 7. Payload
+
+The payload represents data carried by a packet.
+
+If a Raw layer is available, the program displays a limited portion of the payload.
+
+Example:
+
+```text
+Payload : b'...'
+```
+
+If no Raw payload is available:
+
+```text
+Payload : No Raw Payload
+```
+
+---
+
+# 🔬 Protocols Observed
+
+## TCP
+
+TCP is a connection-oriented transport protocol.
+
+It provides reliable communication between devices and is commonly used by applications that require reliable data delivery.
+
+Example output:
+
+```text
+Protocol : TCP
+```
+
+---
+
+## UDP
+
+UDP is a connectionless transport protocol.
+
+It has lower overhead than TCP and is commonly used where speed and low latency are important.
+
+Example output:
+
+```text
+Protocol : UDP
+```
+
+During testing, UDP packets were observed with multicast destination addresses such as:
+
+```text
+224.0.0.251
+```
+
+---
+
+## ICMP
+
+ICMP is used for network control and diagnostic communication.
+
+The sniffer identifies ICMP packets separately when they are captured.
+
+---
+
+# 🧪 Testing
+
+The network sniffer was tested by running the Python program and generating normal network traffic using a web browser.
+
+### Testing Procedure
+
+1. Start the Python network sniffer.
+2. Keep the program running.
+3. Open a web browser.
+4. Visit a normal website.
+5. Generate network activity.
+6. Return to the terminal.
+7. Observe captured packets.
+8. Verify source and destination IP addresses.
+9. Verify protocol information.
+10. Stop the program using `Ctrl+C`.
+
+---
+
+# 📸 Project Output
+
+The following screenshot shows the network sniffer successfully capturing and displaying network packets.
+
+![Network Sniffer Output](screenshots/task1-output.png)
+
+### Observed Information
+
+The captured output demonstrates that the program successfully displayed:
+
+* Packet numbers
+* Source IP addresses
+* Destination IP addresses
+* TCP protocol
+* Source ports
+* Destination ports
+* Payload information
+
+---
+
+# 📝 Sample Packet Analysis
+
+One captured packet contained information similar to:
+
+```text
+Packet Number   : 26665
+Source IP       : 10.0.13.157
+Destination IP  : 10.0.7.59
+Protocol        : TCP
+Source Port     : 52850
+Destination Port: 8009
+Payload         : No Raw Payload
+```
+
+### Analysis
+
+The packet was identified as a TCP packet.
+
+The source device used IP address:
+
+```text
+10.0.13.157
+```
+
+The destination device used:
+
+```text
+10.0.7.59
+```
+
+The communication involved source port:
+
+```text
+52850
+```
+
+and destination port:
+
+```text
+8009
+```
+
+The program did not find a Raw payload layer for this particular packet.
+
+---
+
+# 🔐 Cybersecurity Relevance
+
+Network traffic analysis is an important part of cybersecurity.
+
+A network sniffer can help security professionals understand:
+
+* Network communication
+* Protocol usage
+* IP addresses
+* Ports
+* Traffic patterns
+* Suspicious network activity
+
+Packet analysis can also contribute to security monitoring and troubleshooting.
+
+However, packet capture should only be performed on networks and systems where the user has appropriate authorization.
+
+---
+
+# ⚠️ Ethical and Legal Considerations
+
+This project is intended for **educational and authorized cybersecurity testing only**.
+
+Users should not capture or inspect network traffic belonging to other people or systems without permission.
+
+The tool should be used only:
+
+* On your own system
+* On a lab environment
+* On an authorized network
+* For educational or security-testing purposes
+
+Unauthorized interception or analysis of network traffic may violate organizational policies or applicable laws.
+
+---
+
+# 🚧 Limitations
+
+This is a beginner-level network sniffer and has several limitations:
+
+1. It is primarily designed for basic packet inspection.
+2. It does not provide a graphical dashboard.
+3. It does not permanently store packets in a database.
+4. It does not perform advanced threat detection.
+5. It does not classify malicious traffic automatically.
+6. It does not decrypt encrypted network traffic.
+7. Payload information depends on whether a Raw layer is present.
+8. The output is displayed directly in the terminal.
+
+---
+
+# 🚀 Future Improvements
+
+The project can be improved by adding:
+
+* Graphical user interface
+* Packet filtering
+* Protocol statistics
+* Packet logging
+* CSV export
+* PCAP file generation
+* Real-time traffic graphs
+* Automatic suspicious-traffic detection
+* Search and filtering of captured packets
+* More detailed protocol analysis
+
+---
+
+# 📚 Learning Outcomes
+
+After completing this project, the following concepts were practiced:
+
+* Network packet structure
+* IP addressing
+* TCP and UDP
+* Network ports
+* Packet capturing
+* Basic packet analysis
+* Python programming
+* Scapy library
+* Cybersecurity monitoring
+* Git and GitHub
+* Technical documentation
+
+---
+
+# 📌 Internship Information
+
+**Program:** CodeAlpha Cyber Security Internship
+
+**Task:** Task 1 – Basic Network Sniffer
+
+**Domain:** Cyber Security
+
+**Technology:** Python + Scapy
+
+**Repository:** `CodeAlpha_Basic_Network_Sniffer`
+
+---
+
+# 👩‍💻 Author
+
+**Muskan Kumari**
+
+B.Tech CSE – Cyber Security
+
+Rungta College of Engineering and Technology, Bhilai
+
+---
+
+# ✅ Conclusion
+
+The Basic Network Sniffer project successfully demonstrates how Python and Scapy can be used to capture and inspect network packets.
+
+The application displays important packet information including source and destination IP addresses, protocols, ports, and available payload information.
+
+The project provides practical exposure to network traffic analysis and basic cybersecurity monitoring concepts and serves as a foundation for developing more advanced network-security tools.
+
